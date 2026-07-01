@@ -1,0 +1,9 @@
+{
+  "error": {
+    "code": "AUTH_004",
+    "message": "This email already has an account.",
+    "detail": { "field": "email" }
+  },
+  "request_id": "req_01H8ABCDEF",
+  "docs_url": "https://docs.unero.com/errors/AUTH_004"
+}

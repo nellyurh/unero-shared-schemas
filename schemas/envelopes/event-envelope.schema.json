@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/envelopes/event-envelope.schema.json",
+  "title": "Event Envelope",
+  "description": "Standard envelope every Unero domain event carries (EVENT_CATALOG.md §Envelope).",
+  "type": "object",
+  "required": [
+    "event_id", "event_type", "event_version", "emitted_at",
+    "producer", "correlation_id", "schema_version", "payload"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "event_id": {
+      "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Uuid",
+      "description": "UUID v7. Consumers dedupe by this (EVENT_CATALOG idempotency)."
+    },
+    "event_type": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z]+$",
+      "description": "<Noun><PastTenseVerb>, e.g. WalletCredited."
+    },
+    "event_version": { "type": "integer", "minimum": 1 },
+    "emitted_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" },
+    "producer": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/ServiceName" },
+    "correlation_id": { "type": "string", "minLength": 1 },
+    "causation_id": { "type": ["string", "null"] },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "SemVer of the payload schema for this event_type."
+    },
+    "payload": { "type": "object" }
+  }
+}

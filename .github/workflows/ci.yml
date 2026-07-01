@@ -1,0 +1,41 @@
+name: schemas-ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - name: Validate schemas + examples
+        run: npm run validate
+      - name: Lint OpenAPI components
+        run: npx -y @stoplight/spectral-cli@6 lint "openapi/**/*.yaml" --ruleset .spectral.yaml
+
+  publish:
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+      - run: npm ci
+      - run: npm run validate
+      # Publishes @uneroplatform/shared-schemas to GitHub Packages on version bump (ADR-022).
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/WalletDebited.schema.json",
+  "title": "WalletDebited payload",
+  "description": "Emitted by wallet-service when a wallet is debited (EVENT_CATALOG §WalletDebited).",
+  "type": "object",
+  "required": ["wallet_id", "amount", "ledger_entry_id", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "wallet_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "amount": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Money" },
+    "ledger_entry_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "reference": { "type": "string" },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}

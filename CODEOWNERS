@@ -1,0 +1,6 @@
+# Shared contracts are platform-wide. Changes require platform review; envelope/error
+# changes additionally require architecture review.
+*                          @uneroplatform/platform-engineering
+/schemas/envelopes/        @uneroplatform/platform-engineering @uneroplatform/architecture
+/schemas/errors/           @uneroplatform/platform-engineering @uneroplatform/architecture
+/openapi/components/       @uneroplatform/platform-engineering @uneroplatform/architecture

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/common.schema.json",
+  "title": "Unero common definitions",
+  "description": "Reusable value objects shared across events, errors, and provider contracts.",
+  "$defs": {
+    "Uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+      "description": "UUID (v7 for event_id)."
+    },
+    "Ulid": {
+      "type": "string",
+      "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$",
+      "description": "ULID identifier (aggregate ids)."
+    },
+    "Currency": {
+      "type": "string",
+      "enum": ["NGN", "USD"],
+      "description": "ISO-4217. NGN at launch (CBN)."
+    },
+    "MoneyMinor": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Amount in integer minor units (kobo for NGN). Never a float (CODING_STANDARDS §8)."
+    },
+    "Money": {
+      "type": "object",
+      "required": ["amount_minor", "currency"],
+      "additionalProperties": false,
+      "properties": {
+        "amount_minor": { "$ref": "#/$defs/MoneyMinor" },
+        "currency": { "$ref": "#/$defs/Currency" }
+      }
+    },
+    "ServiceName": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "kebab-case service identifier (ENGINEERING_STANDARDS §2)."
+    },
+    "Timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 UTC."
+    }
+  }
+}

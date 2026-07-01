@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/provider-interface/payout-request.schema.json",
+  "title": "Normalized Payout Request",
+  "description": "Provider-agnostic payout request. Adapters translate this to a provider SDK call; callers never see provider shapes (ADR-004, ADR-012).",
+  "type": "object",
+  "required": ["idempotency_key", "amount", "destination"],
+  "additionalProperties": false,
+  "properties": {
+    "idempotency_key": { "type": "string", "minLength": 8 },
+    "amount": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Money" },
+    "destination": {
+      "type": "object",
+      "required": ["account_number", "bank_code"],
+      "additionalProperties": false,
+      "properties": {
+        "account_number": { "type": "string", "pattern": "^[0-9]{10}$" },
+        "bank_code": { "type": "string", "pattern": "^[0-9]{3,6}$" },
+        "account_name": { "type": "string" }
+      }
+    },
+    "narration": { "type": "string", "maxLength": 100 }
+  }
+}

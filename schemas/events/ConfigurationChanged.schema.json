@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/ConfigurationChanged.schema.json",
+  "title": "ConfigurationChanged payload",
+  "description": "Emitted by config-service on any configuration change (ADR-020, EVENT_CATALOG §ConfigurationChanged).",
+  "type": "object",
+  "required": ["namespace", "key", "version", "changed_by", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "namespace": { "type": "string", "description": "e.g. fees, limits, provider." },
+    "key": { "type": "string" },
+    "version": { "type": "integer", "minimum": 1 },
+    "previous_version": { "type": ["integer", "null"], "minimum": 1 },
+    "changed_by": { "type": "string" },
+    "reason": { "type": "string" },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "codes": [
+    { "namespace": "AUTH", "code": "AUTH_001", "http_status": 401, "message": "Missing or invalid credentials." },
+    { "namespace": "AUTH", "code": "AUTH_002", "http_status": 401, "message": "Session expired." },
+    { "namespace": "AUTH", "code": "AUTH_003", "http_status": 401, "message": "API key invalid or revoked." },
+    { "namespace": "AUTH", "code": "AUTH_004", "http_status": 409, "message": "This email already has an account." },
+    { "namespace": "AUTH", "code": "AUTH_005", "http_status": 401, "message": "MFA required. Complete the challenge." },
+    { "namespace": "AUTH", "code": "AUTH_006", "http_status": 401, "message": "Verification required. Verify email or phone first." },
+    { "namespace": "AUTHZ", "code": "AUTHZ_001", "http_status": 403, "message": "You do not have permission to perform this action." },
+    { "namespace": "AUTHZ", "code": "AUTHZ_003", "http_status": 403, "message": "Four-eyes approval required." },
+    { "namespace": "VALIDATION", "code": "VALIDATION_001", "http_status": 400, "message": "Request body could not be parsed." },
+    { "namespace": "VALIDATION", "code": "VALIDATION_006", "http_status": 400, "message": "Amount is not a positive integer minor unit." },
+    { "namespace": "IDEMPOTENCY", "code": "IDEMPOTENCY_001", "http_status": 400, "message": "Idempotency-Key header missing on a mutating endpoint." },
+    { "namespace": "IDEMPOTENCY", "code": "IDEMPOTENCY_002", "http_status": 409, "message": "Idempotency-Key reused with a different request body." }
+  ]
+}

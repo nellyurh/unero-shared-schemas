@@ -1,0 +1,31 @@
+# Reusable error responses, keyed by HTTP status. Import into any operation's responses.
+BadRequest:
+  description: Validation or idempotency error.
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/Error.yaml#/Error'
+Unauthorized:
+  description: Authentication required or failed.
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/Error.yaml#/Error'
+Forbidden:
+  description: Authenticated but not permitted.
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/Error.yaml#/Error'
+Conflict:
+  description: Idempotency conflict or state conflict.
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/Error.yaml#/Error'
+TooManyRequests:
+  description: Rate limited.
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/Error.yaml#/Error'

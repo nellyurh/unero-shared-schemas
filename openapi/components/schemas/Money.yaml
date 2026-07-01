@@ -1,0 +1,14 @@
+# Reusable OpenAPI component. Referenced by every public/internal API spec via
+#   $ref: 'https://schemas.unero.com/openapi/components/schemas/Money.yaml'
+Money:
+  type: object
+  required: [amount_minor, currency]
+  additionalProperties: false
+  properties:
+    amount_minor:
+      type: integer
+      minimum: 0
+      description: Integer minor units (kobo). Never a float (CODING_STANDARDS §8).
+    currency:
+      type: string
+      enum: [NGN, USD]

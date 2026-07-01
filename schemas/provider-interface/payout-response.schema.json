@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/provider-interface/payout-response.schema.json",
+  "title": "Normalized Payout Response",
+  "description": "Provider-agnostic payout result. Adapters normalize provider errors into this shape.",
+  "type": "object",
+  "required": ["status", "provider", "provider_reference"],
+  "additionalProperties": false,
+  "properties": {
+    "status": { "type": "string", "enum": ["accepted", "processing", "succeeded", "failed"] },
+    "provider": { "type": "string", "enum": ["9psb", "flutterwave", "mock"] },
+    "provider_reference": { "type": "string" },
+    "normalized_error_code": { "type": ["string", "null"], "pattern": "^[A-Z]+_[0-9]{3}$" },
+    "completed_at": { "type": ["string", "null"], "format": "date-time" }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/envelopes/error-envelope.schema.json",
+  "title": "Error Envelope",
+  "description": "Every error from any Unero API carries this shape (ERROR_CATALOG.md).",
+  "type": "object",
+  "required": ["error", "request_id"],
+  "additionalProperties": false,
+  "properties": {
+    "error": {
+      "type": "object",
+      "required": ["code", "message"],
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z]+_[0-9]{3}$",
+          "description": "Stable machine-readable code NAMESPACE_NNN (e.g. AUTH_004)."
+        },
+        "message": { "type": "string", "minLength": 1 },
+        "detail": {
+          "type": "object",
+          "description": "Optional structured context (e.g. {field, reason, required_permission}).",
+          "additionalProperties": true
+        }
+      }
+    },
+    "request_id": { "type": "string", "minLength": 1 },
+    "docs_url": { "type": "string", "format": "uri" }
+  }
+}

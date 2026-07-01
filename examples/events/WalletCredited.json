@@ -1,0 +1,17 @@
+{
+  "event_id": "018f7a2b-4c3d-7e1f-9a0b-1c2d3e4f5a6b",
+  "event_type": "WalletCredited",
+  "event_version": 1,
+  "emitted_at": "2026-06-30T10:30:00Z",
+  "producer": "wallet-service",
+  "correlation_id": "req_01H8ABCDEF",
+  "causation_id": null,
+  "schema_version": "1.0.0",
+  "payload": {
+    "wallet_id": "01HZY0K3QJ8N4M2P5R7T9V0W1X",
+    "amount": { "amount_minor": 100000, "currency": "NGN" },
+    "ledger_entry_id": "01HZY0K3QJ8N4M2P5R7T9V0W2Y",
+    "reference": "TRX-2026-0001",
+    "occurred_at": "2026-06-30T10:30:00Z"
+  }
+}

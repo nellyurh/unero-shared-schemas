@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/FeatureFlagChanged.schema.json",
+  "title": "FeatureFlagChanged payload",
+  "description": "Emitted by feature-flag-service when a flag changes (ADR-019, EVENT_CATALOG §FeatureFlagChanged).",
+  "type": "object",
+  "required": ["flag_key", "state", "changed_by", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "flag_key": { "type": "string" },
+    "state": { "type": "string", "enum": ["on", "off", "conditional"] },
+    "changed_by": { "type": "string" },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}
