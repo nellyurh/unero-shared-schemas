@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/RoleCreated.schema.json",
+  "title": "RoleCreated payload",
+  "description": "Emitted by identity-service when a role is created (admin API or platform seeding). Reference data, no PII.",
+  "type": "object",
+  "required": ["role_id", "name", "is_system", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "role_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "name": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "is_system": { "type": "boolean" },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}
