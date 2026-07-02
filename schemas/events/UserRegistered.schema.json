@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/UserRegistered.schema.json",
+  "title": "UserRegistered payload",
+  "description": "Emitted by identity-service when a user is registered (business-intent event; supersedes UserCreated). Carries no PII: consumers read email/username from the identity API.",
+  "type": "object",
+  "required": ["user_id", "email_verified", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "user_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "email_verified": { "type": "boolean" },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}

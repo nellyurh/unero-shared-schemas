@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/EmailVerified.schema.json",
+  "title": "EmailVerified payload",
+  "description": "Emitted by identity-service when a user proves ownership of their email address.",
+  "type": "object",
+  "required": ["user_id", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "user_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}
