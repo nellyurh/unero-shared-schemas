@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/TokenRevoked.schema.json",
+  "title": "TokenRevoked payload",
+  "description": "Emitted by identity-service when a refresh-token family is revoked — on logout, on reuse detection, or when a security change invalidates sessions. Family-level: one event announces the whole lineage is dead. The reason is a stable machine value.",
+  "type": "object",
+  "required": ["user_id", "family_id", "reason", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "user_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "family_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "reason": { "type": "string", "enum": ["logout", "reuse_detected", "password_change"] },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}

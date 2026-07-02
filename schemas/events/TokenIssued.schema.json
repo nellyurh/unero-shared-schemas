@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/TokenIssued.schema.json",
+  "title": "TokenIssued payload",
+  "description": "Emitted by identity-service when a refresh token is issued — on login (new family) and on each rotation (same family, new member). Carries no secret; consumers correlate sessions via the ids and the paired access-token jti.",
+  "type": "object",
+  "required": ["user_id", "family_id", "access_jti", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "user_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "family_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "access_jti": { "type": "string", "minLength": 1 },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}
