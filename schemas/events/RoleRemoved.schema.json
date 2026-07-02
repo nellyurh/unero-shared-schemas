@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/RoleRemoved.schema.json",
+  "title": "RoleRemoved payload",
+  "description": "Emitted by identity-service when a role is revoked from a user. Carries the user's new authz_version so consumers can invalidate cached authorization. No PII.",
+  "type": "object",
+  "required": ["user_id", "role_id", "authz_version", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "user_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "role_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "authz_version": { "type": "integer", "minimum": 1 },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}
