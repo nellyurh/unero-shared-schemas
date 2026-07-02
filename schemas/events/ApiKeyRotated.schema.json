@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/ApiKeyRotated.schema.json",
+  "title": "ApiKeyRotated payload",
+  "description": "Emitted by identity-service when an API key is rotated: this key enters its grace window and a replacement is issued. Never carries a secret.",
+  "type": "object",
+  "required": ["api_key_id", "replacement_id", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "api_key_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "replacement_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}
