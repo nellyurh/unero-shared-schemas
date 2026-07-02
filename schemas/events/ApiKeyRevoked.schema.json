@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/ApiKeyRevoked.schema.json",
+  "title": "ApiKeyRevoked payload",
+  "description": "Emitted by identity-service when an API key is revoked. Revocation is immediate and permanent.",
+  "type": "object",
+  "required": ["api_key_id", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "api_key_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}
