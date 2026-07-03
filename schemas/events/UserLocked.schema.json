@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unero.com/events/UserLocked.schema.json",
+  "title": "UserLocked payload",
+  "description": "Emitted by identity-service when consecutive failed logins trip the brute-force threshold and the account is temporarily locked. Never carries attempted credentials.",
+  "type": "object",
+  "required": ["user_id", "locked_until", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "user_id": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Ulid" },
+    "locked_until": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" },
+    "occurred_at": { "$ref": "https://schemas.unero.com/common.schema.json#/$defs/Timestamp" }
+  }
+}
